@@ -2,6 +2,5 @@ hyprpaper.conf
 conf.d/init/matugen.conf
 custom.d/regular/monitors.conf
 hyprlockColors.conf
-pkgs/*/*
-!pkgs/*/PKGBUILD
-scheme/current.conf
+plugins/wl-kbptr/*
+!plugins/wl-kbptr/PKGBUILD
