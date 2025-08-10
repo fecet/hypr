@@ -8,7 +8,7 @@ pkgver=0.50.1
 pkgrel=1
 pkgdesc='a highly customizable dynamic tiling Wayland compositor'
 arch=(x86_64 aarch64)
-url="https://github.com/hyprwm/${pkgname^}"
+url="https://github.com/hyprwm/${pkgname^}#commit=aa8da83717aafa597e7ac3bb5432bb789eb6b10d"
 license=(BSD-3-Clause)
 depends=(cairo # libcairo.so
          aquamarine libaquamarine.so
@@ -67,15 +67,16 @@ optdepends=('cmake: to build and install plugins using hyprpm'
             'uwsm: the recommended way to start Hyprland')
 provides=(wayland-compositor)
 _archive="${pkgname^}-$pkgver"
-source=("$_archive.tar.gz::$url/releases/download/v$pkgver/source-v$pkgver.tar.gz")
-sha256sums=('2e7280e08d9b0460159bdfcdebdf6c532a79843a6a1e8417f78c15f6293fc956')
+source=("git+$url")
+sha256sums=('SKIP')
 
 prepare() {
-	ln -sf hyprland-source "$_archive"
+	ln -sf Hyprland "$_archive"
 	cd "$_archive"
-	sed -i -e '/^release:/{n;s/-D/-DCMAKE_SKIP_RPATH=ON -D/}' Makefile
+  git submodule update --init --recursive  
+	# sed -i -e '/^release:/{n;s/-D/-DCMAKE_SKIP_RPATH=ON -D/}' Makefile
 	# Workaround for https://gitlab.archlinux.org/archlinux/packaging/packages/hyprland/-/issues/15
-	rm -fv scripts/generateVersion.sh
+	# rm -fv scripts/generateVersion.sh
 }
 
 build() {
