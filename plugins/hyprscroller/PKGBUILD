@@ -1,0 +1,23 @@
+pkgname=hyprland-plugin-hyprscroller
+pkgver=0.50.1
+pkgrel=1
+pkgdesc="Hyprland layout plugin providing a scrolling layout like PaperWM"
+arch=('x86_64')
+url="https://github.com/cpiber/hyprscroller"
+license=('BSD')
+# source=(${pkgname}::git+${url}.git#commit=c7b12e4a8df83b0445799ffbecd64c3f20adb393)
+source=(${pkgname}::git+${url}.git)
+sha512sums=('SKIP')
+depends=("hyprland=${pkgver}")
+makedepends=('git' 'hyprland')
+options=(!debug)
+
+build() {
+  cd "${srcdir}/${pkgname}"
+  make all
+}
+
+package() {
+  cd "${srcdir}/${pkgname}"
+  install -Dm755 hyprscroller.so "$pkgdir/usr/lib/hyprscroller.so"
+}
