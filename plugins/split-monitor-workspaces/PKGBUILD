@@ -1,0 +1,23 @@
+pkgname=hyprland-plugin-split-monitor-workspaces
+pkgver=0.50.1
+pkgrel=1
+pkgdesc="A small Hyprland plugin to provide awesome-like workspace behavior"
+arch=('x86_64')
+url="https://github.com/Duckonaut/split-monitor-workspaces"
+license=('BSD')
+source=(${pkgname}::git+${url}.git#commit=8f0c875a5ba9864b1267e74e6f03533d18c2bca0)
+sha512sums=('SKIP')
+depends=("hyprland=${pkgver}")
+makedepends=('git' 'hyprland')
+options=(!debug)
+
+build() {
+  cd "${srcdir}/${pkgname}"
+  meson setup build
+}
+
+package() {
+  cd "${srcdir}/${pkgname}/build"
+  meson compile
+  install -Dm755 libsplit-monitor-workspaces.so "$pkgdir/usr/lib/libsplit-monitor-workspaces.so"
+}

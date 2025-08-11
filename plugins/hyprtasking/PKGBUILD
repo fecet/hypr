@@ -1,0 +1,24 @@
+pkgname=hyprland-plugin-hyprtasking
+pkgver=0.50.1
+pkgrel=1
+pkgdesc="Powerful workspace management plugin, packed with features"
+arch=('x86_64')
+url="https://github.com/raybbian/hyprtasking"
+license=('BSD')
+# source=(${pkgname}::git+${url}.git#commit=c7b12e4a8df83b0445799ffbecd64c3f20adb393)
+source=(${pkgname}::git+${url}.git)
+sha512sums=('SKIP')
+depends=("hyprland=${pkgver}")
+makedepends=('git' 'hyprland')
+options=(!debug)
+
+build() {
+  cd "${srcdir}/${pkgname}"
+  meson setup build
+}
+
+package() {
+  cd "${srcdir}/${pkgname}/build"
+  meson compile
+  install -Dm755 libhyprtasking.so  "$pkgdir/usr/lib/libhyprtasking.so"
+}
