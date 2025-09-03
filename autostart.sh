@@ -30,8 +30,7 @@ if [ "$(command -v clash-verge)" ]; then
 else
   clash-nyanpasu &
 fi
-input-leap &
-sleep 2
+QT_SCALE_FACTOR=1 input-leap &
 # swww-daemon &
 /bin/bash ~/scripts/wp-autochange.sh &
-copyq --start-server &
+QT_SCALE_FACTOR=1 copyq --start-server &
