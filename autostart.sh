@@ -15,10 +15,7 @@ wl-clip-persist --clipboard regular --reconnect-tries 0 &
 wl-paste --type text --watch cliphist store & 
 
 # bluetooth 
-blueman-applet &
-
-# network
-nm-applet &
+# blueman-applet &
 
 # Permission authentication
 /usr/lib/xfce-polkit/xfce-polkit &
