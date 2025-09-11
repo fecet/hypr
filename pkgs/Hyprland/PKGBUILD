@@ -8,7 +8,7 @@ pkgver=0.50.1
 pkgrel=1
 pkgdesc='a highly customizable dynamic tiling Wayland compositor'
 arch=(x86_64 aarch64)
-url="https://github.com/hyprwm/${pkgname^}#commit=aa8da83717aafa597e7ac3bb5432bb789eb6b10d"
+url="https://github.com/lxe/${pkgname^}"
 license=(BSD-3-Clause)
 depends=(cairo # libcairo.so
          aquamarine libaquamarine.so
