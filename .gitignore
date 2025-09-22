@@ -4,3 +4,4 @@ custom.d/regular/monitors.conf
 hyprlockColors.conf
 pkgs/*/*
 !pkgs/*/PKGBUILD
+scheme/current.conf
